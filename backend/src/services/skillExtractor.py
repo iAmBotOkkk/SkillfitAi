@@ -1,12 +1,12 @@
-import sys
-import json
+import sys , json , warnings
 from pdfminer.high_level import extract_text
 from docx import Document
 from skillNer.skill_extractor_class import SkillExtractor
 from skillNer.general_params import SKILL_DB
 import spacy
 from spacy.matcher import PhraseMatcher;
-import warnings
+
+
 warnings.filterwarnings("ignore", category=UserWarning, module='spacy')
 
 
@@ -20,10 +20,12 @@ def extract_text_from_file(file_path):
     except Exception as e:
         return ""
     return ""
+    
 
 
 try:
     file_path = sys.argv[1]
+
     nlp = spacy.load("en_core_web_lg")
 
     skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
