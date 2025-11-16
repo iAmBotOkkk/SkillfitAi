@@ -8,7 +8,6 @@ export const HomePage = () => {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
-        // Trigger animation after component mounts
         const timer = setTimeout(() => setIsVisible(true), 100)
         return () => clearTimeout(timer)
     }, [])

@@ -4,5 +4,5 @@ import { handleMatchJobs } from "../controllers/matchJobs.controller";
 const router = express.Router();
 
 
-router.post("/" , handleMatchJobs)
+router.post("/matchJob" , handleMatchJobs)
 export default router;

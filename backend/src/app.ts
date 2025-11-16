@@ -15,7 +15,7 @@ app.use(cors());
 
 
 app.use("/api/uploadResume" , uploadResume);
-app.use("/api/matchJob", getMatchingJobs)
+app.use("/api", getMatchingJobs)
 
 
 app.listen(PORT , () =>{

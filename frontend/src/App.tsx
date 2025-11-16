@@ -1,6 +1,5 @@
-
 import { Routes , Route } from "react-router-dom";
-import { Resume } from "./pages/resume";
+import {AddResume} from "./pages/resume";
 import { HomePage } from "./pages/home";
 import { Navbar } from "./components/Navbar";
 import toast,{Toaster} from "react-hot-toast";
@@ -12,7 +11,7 @@ function App() {
   <Navbar/>
   <Routes>
     <Route path="/" element ={<HomePage/>} />
-    <Route path="/uploadResume" element ={<Resume/>} />
+    <Route path="/uploadResume" element ={<AddResume/>} />
   </Routes>
   <Toaster/>
     </div>
