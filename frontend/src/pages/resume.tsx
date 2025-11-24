@@ -5,7 +5,8 @@ import { Instance } from "@/lib/axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import { Spinner } from "@/components/ui/spinner";
+import { Link } from "lucide-react";
+
 
 interface MatchedJob {
   jobTitle: string;
@@ -14,7 +15,8 @@ interface MatchedJob {
   skills: string[];
   matchedSkills: string[];
   missingSkills: string[];
-  accuracy: number;
+  similarity: number;
+  apply_link:string
 }
 
 
@@ -51,7 +53,7 @@ export const AddResume = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response);
-    
+
       const extracted = response.data.extractedSkills?.skills || [];
       if (extracted.length === 0) {
         toast.error("No skills extracted from resume");
@@ -68,16 +70,16 @@ export const AddResume = () => {
     }
   };
 
-  const handleMatchJobs = async() => {
+  const handleMatchJobs = async () => {
     try {
-      console.log("Sending skills to backend" , skills)
-    const matchRes = await Instance.post("/matchJob", { skills });
-    console.log( "Backend logic " ,  matchRes.data)
-    setMatchedJobs(matchRes.data?.matchedJobs || []);
-    toast.success("Matched jobs loaded!");
-  } catch (err) {
-    toast.error("Error matching jobs");
-  }
+      console.log("Sending skills to backend", skills)
+      const matchRes = await Instance.post("/matchJob", { resumeText: skills.join(" ") });
+      console.log("Backend logic ", matchRes.data)
+      setMatchedJobs(matchRes.data?.matchedJobs || []);
+      toast.success("Matched jobs loaded!");
+    } catch (err) {
+      toast.error("Error matching jobs");
+    }
   }
 
   return (
@@ -142,10 +144,10 @@ export const AddResume = () => {
         transition={{ delay: 0.4 }}
       >
         <Button onClick={() => {
-          if(!skills.length) {
+          if (!skills.length) {
             toast.error("Upload resume first")
             return;
-          }    
+          }
           handleMatchJobs();
         }}
           disabled={isLoading}
@@ -184,7 +186,7 @@ export const AddResume = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-lg font-semibold mb-2">Extracted Skills:</h3>
+              <h3 className="text-lg font-semibold mb-2">Your Skills:</h3>
               <motion.div
                 className="flex flex-wrap gap-2"
                 layout
@@ -225,18 +227,27 @@ export const AddResume = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                      <div>
-                        <div className="flex justify-between items-center">
-                      <h4 className="text-lg font-semibold">{match.jobTitle}</h4>
-                      <span className="text-blue-600 font-medium">{match.accuracy}% Match</span>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center ">
+                        <h4 className="text-lg font-semibold">{match.jobTitle}</h4>
+                        <span className="text-blue-600 font-medium">{match.similarity?.toFixed(2)}% Match</span>
+                      </div>
+                      <p className="text-sm text-gray-600">{match.company || "Unknown Company"} • {match.location || ""}</p>
+                      <p>{match.matchedSkills}</p>
+                      <p>{match.missingSkills}</p>
+                      <a href={match.apply_link} className="text-blue-500 flex items-center">Apply
+                      <Link className="size-3 "/>
+                      </a>
                     </div>
-                    <p className="text-sm text-gray-600">{match.company || "Unknown Company"} • {match.location || ""}</p>                   
-                    <p>{match.skills}</p>
-                     </div>
                     <div className="flex flex-wrap gap-2 mt-3">
-                      {match.matchedSkills.map((skill, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs">{skill}</span>
-                      ))}
+                      {Array.isArray(match.matchedSkills) && match.matchedSkills.length > 0 ? (
+                        match.matchedSkills.map((skill, idx) => (
+                          <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs">{skill}</span>
+                        ))
+                      ) : (
+                        <span className="text-gray-400 italic text-xs">No skill breakdown available</span>
+                      )}
+
                     </div>
                   </motion.div>
                 ))}

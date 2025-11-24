@@ -12,13 +12,11 @@ export const handleUploadResume = async (req: Request, res: Response): Promise<v
       return;
     }
 
-
     if (!filePath.toLowerCase().endsWith(".pdf") && !filePath.toLowerCase().endsWith(".docx")) {
       res.status(400).json({ message: "Invalid file type" });
       return;
     }
 
-  
     console.log("Processing file:", filePath);
 
 const absolutePath = path.join(process.cwd(), filePath);
@@ -30,21 +28,20 @@ console.log("Running Python script:", pythonScript);
 
 const python = spawn("python", [pythonScript, absolutePath]);
 
-
     let dataToSend = "";
     let errorOutput = "";
 
 
     python.stdout.on("data", (data) => {
       const output = data.toString();
-      console.log("🐍 Python raw stdout:", output);
+      console.log("Python raw stdout:", output);
       dataToSend += output;
     });
 
 
     python.stderr.on("data", (data) => {
       const err = data.toString();
-      console.error("🐍 Python stderr:", err);
+      console.error("Python stderr:", err);
       errorOutput += err;
     });
 
@@ -54,8 +51,6 @@ const python = spawn("python", [pythonScript, absolutePath]);
         if (fs.existsSync(filePath)) {
           fs.unlinkSync(filePath);
         }
-
-  
         if (errorOutput && !dataToSend.trim()) {
           console.warn("Python Error Output:", errorOutput);
           res.status(500).json({ message: "Python execution error", details: errorOutput });
@@ -78,8 +73,6 @@ const python = spawn("python", [pythonScript, absolutePath]);
           res.status(500).json({ message: "Error parsing Python output", details: jsonOutput });
           return;
         }
-
-     
         if (parsedData.error) {
           res.status(500).json({ message: "Error in Python script", details: parsedData.error });
           return;

@@ -98,5 +98,15 @@
     "description": "Android is Google’s mobile operating system powering more than 3 billion devices worldwide. Android is about bringing computing to everyone in the world. We believe computing is a super power for good, enabling access to information, economic opportunity, productivity, connectivity between friends and family and more. We think everyone in the world should have access to the best computing has to offer. We provide the platform for original equipment manufacturers (OEMs) and developers to build compelling computing devices (smartphones, tablets, TVs, wearables, etc) that run the best apps/services for everyone in the world.",
     "skills": ["Experience with machine learning or artificial intelligence concepts or technology, Experience in developing, launching products, or technologies with Large Language Models (LLMs)."],
     "apply_link": "https://www.google.com/about/careers/applications/jobs/results/110811477161452230-senior-software-engineer-android-ml-services"
+  },
+  {
+    "title": "Software Engineer, Full stack developement",
+    "company": "Google",
+    "location": "Kraków, Poland",
+    "salary": "₹ 9,50,000 / year",
+    "posted": "3 days ago",
+    "description": "Android is Google’s mobile operating system powering more than 3 billion devices worldwide. Android is about bringing computing to everyone in the world. We believe computing is a super power for good, enabling access to information, economic opportunity, productivity, connectivity between friends and family and more. We think everyone in the world should have access to the best computing has to offer. We provide the platform for original equipment manufacturers (OEMs) and developers to build compelling computing devices (smartphones, tablets, TVs, wearables, etc) that run the best apps/services for everyone in the world.",
+    "skills": ["Full stack", "Node.js", "Typescript", "REST APIs"],
+    "apply_link": "https://www.test.com/"
   }
 ]

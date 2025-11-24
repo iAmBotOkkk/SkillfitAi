@@ -14,28 +14,27 @@ export const HomePage = () => {
 
     return (
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background with overlay for better text readability on mobile */}
+           
             <BackgroundLines children className="absolute inset-0 w-full h-full" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/10 pointer-events-none" />
-            
-            {/* Main Content */}
+        
             <div className="relative z-10 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto py-12 sm:py-16 lg:py-20">
                 
-                {/* Heading with fade + slide up animation */}
+              
                 <h1 className={`mx-auto max-w-4xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-blue-500 transition-all duration-1000 transform ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                     Upload your resume and get matched
                 </h1>
                 
-                {/* Description with staggered animation */}
+              
                 <p className={`py-4 sm:py-6 mx-auto text-center max-w-xl px-4 text-base sm:text-lg md:text-xl text-zinc-600 font-normal leading-relaxed transition-all duration-1000 delay-200 transform ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                     Upload your resume to find jobs that match your skills. See job listings with a matching percentage to know which roles fit you best.
                 </p>
                 
-                {/* CTA Buttons with animation */}
+             
                 <div className={`flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 items-center mx-auto mt-6 sm:mt-8 max-w-md sm:max-w-none transition-all duration-1000 delay-400 transform ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
