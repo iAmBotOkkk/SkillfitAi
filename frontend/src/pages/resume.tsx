@@ -227,13 +227,13 @@ export const AddResume = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center ">
+                    <div className="space-y-2  w-full ">
+                      <div className="flex justify-between items-center w-full ">
                         <h4 className="text-lg font-semibold">{match.jobTitle}</h4>
                         <span className="text-blue-600 font-medium">{match.similarity?.toFixed(2)}% Match</span>
                       </div>
                       <p className="text-sm text-gray-600">{match.company || "Unknown Company"} • {match.location || ""}</p>
-                      <p>{match.matchedSkills}</p>
+                      <p className="overflow-hidden">{match.matchedSkills}</p>
                       <p>{match.missingSkills}</p>
                       <a href={match.apply_link} className="text-blue-500 flex items-center">Apply
                       <Link className="size-3 "/>

@@ -108,5 +108,27 @@
     "description": "Android is Google’s mobile operating system powering more than 3 billion devices worldwide. Android is about bringing computing to everyone in the world. We believe computing is a super power for good, enabling access to information, economic opportunity, productivity, connectivity between friends and family and more. We think everyone in the world should have access to the best computing has to offer. We provide the platform for original equipment manufacturers (OEMs) and developers to build compelling computing devices (smartphones, tablets, TVs, wearables, etc) that run the best apps/services for everyone in the world.",
     "skills": ["Full stack", "Node.js", "Typescript", "REST APIs"],
     "apply_link": "https://www.test.com/"
-  }
+  },
+  {
+  "title": "Full Stack Developer (MERN/TypeScript)",
+  "company": "TechNova Systems Pvt. Ltd.",
+  "location": "Bangalore, Karnataka, India",
+  "salary": "₹ 8,00,000 / year",
+  "posted": "2 days ago",
+  "description": "We are looking for a passionate Full Stack Developer to build modern web applications using TypeScript, React, Node.js, and MongoDB. The ideal candidate should have strong JavaScript fundamentals, database knowledge (MySQL, SQL), and experience working with Git/GitHub for version control. Familiarity with TailwindCSS for responsive design and effective communication skills to collaborate with team members is a plus.",
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "MongoDB",
+    "MySQL",
+    "SQL",
+    "TailwindCSS",
+    "Git",
+    "GitHub",
+    "Communication"
+  ],
+  "apply_link": "https://www.technova.in/careers/fullstack-developer"
+}
+
 ]
